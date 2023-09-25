@@ -9,9 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Component
+
 public class UserDetails {
 
         private int id;
