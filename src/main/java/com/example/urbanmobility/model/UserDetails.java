@@ -1,5 +1,6 @@
 package com.example.urbanmobility.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -7,18 +8,21 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-@Data
-@Builder
-
+@Entity // enable jpa
+@Data // enable getters n' setters
+@NoArgsConstructor
 public class UserDetails {
 
-        private int id;
-        private String userName;
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
+        private String username;
         private String email;
         private String phone;
         private String role;
-        private String swishNumber;
-        private String accountNumber;
+        private String swishnumber;
+        private String accountnumber;
+        @ManyToMany(fetch = FetchType.LAZY)
         private List<BookingDetails> bookings;
 
 }

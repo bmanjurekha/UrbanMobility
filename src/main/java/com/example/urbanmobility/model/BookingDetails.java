@@ -1,14 +1,20 @@
 package com.example.urbanmobility.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Builder
-@Data
-
+@Entity // enable jpa
+@Data // enable getters n' setters
+@NoArgsConstructor
 public class BookingDetails {
-    private int id;
-    private int tripId;
-    private String userName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private int tripid;
 
 }
