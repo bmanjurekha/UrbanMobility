@@ -1,0 +1,465 @@
+{
+	"info": {
+		"_postman_id": "ea67fbd1-a140-4d6c-8c8a-a6810c875701",
+		"name": "UrbanMobility",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25572471"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Get Token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/auth/getToken/puneeth/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"getToken",
+								"puneeth",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"manjurekha\",\r\n    \"email\":\"bmanjurekha@gmail.com\",\r\n    \"phone\":\"07643305\",\r\n    \"role\":\"ADMIN\",\r\n    \"swishnumber\":\"07643305\",\r\n    \"accountnumber\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/update-user/manjurekha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"update-user",
+								"manjurekha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"newUser2\",\r\n    \"email\":\"bmanjurekha@gmail.com\",\r\n    \"phone\":\"07643305\",\r\n    \"role\":\"ADMIN\",\r\n    \"swishnumber\":\"07643305\",\r\n    \"accountnumber\":\"\",\r\n    \"bookings\":[{\r\n        \"tripid\":5001\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/user/create-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"create-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/user/get-user/manjurekha",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"get-user",
+								"manjurekha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/user/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"user",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Add User Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/booking/user-booking/manjurekha/10000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"booking",
+								"user-booking",
+								"manjurekha",
+								"10000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Booking",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/booking/user-booking/manjurekha/10000/10001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"booking",
+								"user-booking",
+								"manjurekha",
+								"10000",
+								"10001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/booking/user-booking/manjurekha/10001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"booking",
+								"user-booking",
+								"manjurekha",
+								"10001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Bookings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/booking/user-booking/newuser2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"booking",
+								"user-booking",
+								"newuser2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bookings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8081/booking/bookings",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"booking",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Routes",
+			"item": [
+				{
+					"name": "Create Route",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"placeofdeparture\": \"Folkvisegatan 22\",\r\n    \"placeofarrival\":\"Nordstan\",\r\n    \"transportationtype\":\"Public Transport\",\r\n    \"departuretime\":\"16:00:00\",\r\n    \"arrivaltime\":\"16:30:00\",\r\n    \"price\":\"60\",\r\n    \"discount\":\"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/route/create-route",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"route",
+								"create-route"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Route",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/route/get-route",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"route",
+								"get-route"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supplier",
+			"item": [
+				{
+					"name": "Create Supplier",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"SJ\",\r\n    \"routeDetails\": [\r\n        {\r\n            \"placeofdeparture\": \"Prologatan 22\",\r\n            \"placeofarrival\": \"Central Station\",\r\n            \"transportationtype\": \"Tram\",\r\n            \"departuretime\": \"16:30:00\",\r\n            \"arrivaltime\": \"17:30:00\",\r\n            \"price\": \"60\",\r\n            \"discount\": \"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/supplier/create-supplier",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"supplier",
+								"create-supplier"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Supplier",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InB1bmVldGgifQ.raKFp30meUbBJ9rOoYbUbnNv9oc2vUeQLGctdlblKGo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/supplier/get-supplier",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"supplier",
+								"get-supplier"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
