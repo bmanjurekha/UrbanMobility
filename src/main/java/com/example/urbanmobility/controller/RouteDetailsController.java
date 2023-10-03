@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/route/*")
 public class RouteDetailsController {
@@ -26,6 +29,14 @@ public class RouteDetailsController {
             return ResponseEntity.ok("Route Details Created");
         } else
             return  ResponseEntity.ok("Unauthorized Token");
+    }
+    @GetMapping("/get-route")
+    public ResponseEntity<List<RouteDetails>> getRoute(@RequestHeader("authorization") String usertoken) {
+        if (authService.isAuthenticatedUser(usertoken)) {
+            return ResponseEntity.ok(routeService.getAllRoute());
+
+        } else
+            return  ResponseEntity.ok(new ArrayList<RouteDetails>());
     }
 }
 

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 @RestController
@@ -26,6 +28,13 @@ public class SupplierDetailsController {
             return ResponseEntity.ok("Supplier Details Created");
         } else
             return  ResponseEntity.ok("Unauthorized Token");
+    }
+    @GetMapping("/get-supplier")
+    public ResponseEntity<List<SupplierDetails>> getSupplier(@RequestHeader("authorization") String usertoken) {
+        if (authService.isAuthenticatedUser(usertoken)) {
+            return ResponseEntity.ok(supplierService.getAllSupplier());
+        } else
+            return  ResponseEntity.ok(new ArrayList<SupplierDetails>());
     }
 
 }

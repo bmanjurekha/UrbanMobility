@@ -7,6 +7,8 @@ import com.example.urbanmobility.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -20,5 +22,8 @@ public class UserService {
     }
     public UserDetails getUserDetails(String username){
         return userRepository.findByUsername(username);
+    }
+    public List<UserDetails> getAllUserDetails(){
+        return userRepository.findAll();
     }
 }

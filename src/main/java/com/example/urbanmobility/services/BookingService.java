@@ -4,6 +4,8 @@ import com.example.urbanmobility.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class BookingService {
@@ -18,6 +20,9 @@ public class BookingService {
         bookingRepository.deleteByTripid(tripid);
     }
 
+    public List<BookingDetails> getAllBookings() {
+      return   bookingRepository.findAll();
+    }
 
     public BookingDetails getBookingByTripId(long tripid){
         return bookingRepository.findByTripid(tripid);

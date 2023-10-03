@@ -8,9 +8,12 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-@Entity // enable jpa
-@Data // enable getters n' setters
+@Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
+@Component
+@Entity
 public class UserDetails {
 
         @Id

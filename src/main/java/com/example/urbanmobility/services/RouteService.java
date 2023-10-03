@@ -5,6 +5,8 @@ import com.example.urbanmobility.repository.RouteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class RouteService {
@@ -20,4 +22,8 @@ public class RouteService {
     public RouteDetails getTripbyId(long tripid){
         return routeRepository.findById(tripid);
     }
+
+    public List<RouteDetails> getAllRoute(){
+        return routeRepository.findAll();
+    };
 }

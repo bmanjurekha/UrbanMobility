@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("/booking/*")
@@ -32,6 +33,7 @@ public class BookingDetailsController {
                 ArrayList<BookingDetails> ltBooking = new ArrayList<>();
                 BookingDetails bookingDetails = new BookingDetails();
                 bookingDetails.setTripid(Integer.parseInt(tripid));
+                bookingService.saveBooking(bookingDetails);
                 ltBooking.add(bookingDetails);
                 userDetails.setBookings(ltBooking);
                 userService.saveUser(userDetails);
@@ -90,6 +92,24 @@ public class BookingDetailsController {
             return  ResponseEntity.ok("Unauthorized Token");
 
     }
+
+    @GetMapping("/user-booking/{username}")
+    public ResponseEntity<UserDetails> getUserBooking(@PathVariable String username,@RequestHeader("authorization") String usertoken) {
+        if (authService.isAuthenticatedUser(usertoken)) {
+          return ResponseEntity.ok(userService.getUserDetails(username));
+        }
+        else
+            return ResponseEntity.ok(new UserDetails());
+    }
+    @GetMapping("/bookings")
+    public ResponseEntity<List<BookingDetails>> getUserBooking(@RequestHeader("authorization") String usertoken) {
+        if (authService.isAuthenticatedUser(usertoken)) {
+            return ResponseEntity.ok(bookingService.getAllBookings());
+        }
+        else
+            return ResponseEntity.ok(new ArrayList<BookingDetails>());
+    }
+
 }
 
 

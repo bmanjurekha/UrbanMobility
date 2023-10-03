@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.ServerRequest;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -34,7 +36,9 @@ public class UserDetailsController {
 
             if(authService.isAuthenticatedUser(usertoken)){
                 //Create Authorization
-                AuthDetails authDetails = new AuthDetails(user.getUsername(),"supersecret");
+                AuthDetails authDetails = new AuthDetails();
+                authDetails.setUsername(user.getUsername());
+                authDetails.setPassword("supersecret");
                 authDetails.setUsertoken(jwtService.generateToken(user.getUsername()));
                 authService.save(authDetails);
                 //Create Booking
@@ -69,14 +73,23 @@ public class UserDetailsController {
                 return ResponseEntity.ok("Unauthorized Token");
     }
 
-    @GetMapping("/user/{username}")
-    public  ResponseEntity<UserDetails> getUsers(@PathVariable String username, @RequestHeader("authorization") String usertoken)
+    @GetMapping("/get-user/{username}")
+    public  ResponseEntity<UserDetails> getUser(@PathVariable String username, @RequestHeader("authorization") String usertoken)
     {
         if(authService.isAuthenticatedUser(usertoken)){
          return ResponseEntity.ok(userService.getUserDetails(username));
         }
         else
             return  ResponseEntity.ok(new UserDetails());
+    }
+    @GetMapping("/users")
+    public  ResponseEntity<List<UserDetails>> getAllUsers(@RequestHeader("authorization") String usertoken)
+    {
+        if(authService.isAuthenticatedUser(usertoken)){
+            return ResponseEntity.ok(userService.getAllUserDetails());
+        }
+        else
+            return  ResponseEntity.ok(new ArrayList<UserDetails>());
     }
     private UserDetails GetUserDetails(String username,UserDetails user)
     {
